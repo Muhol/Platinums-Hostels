@@ -6,12 +6,12 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Grechen_Fuemen} from "next/font/google";
 
-const roboto = Grechen_Fuemen({subsets:['latin'], weight:['400']})
+// const roboto = Grechen_Fuemen({subsets:['latin'], weight:['400']})
 
 
-type Props = {}
+// type Props = {}
 
-function Header({}: Props) {
+function Header() {
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);

@@ -1,8 +1,8 @@
 import React from 'react'
 
-type Props = {}
+// type Props = {}
 
-function WhyChooseUs ({}: Props) {
+function WhyChooseUs () {
     const content = [
         {
             head: "Comfortable & Fully Furnished Rooms",

@@ -7,9 +7,9 @@ import { Grechen_Fuemen} from "next/font/google";
 
 const grechen_fuemen = Grechen_Fuemen({subsets:['latin'], weight:['400']})
 
-type Props = {}
+// type Props = {}
 
-function HeroSection({}: Props) {
+function HeroSection() {
   return (
     // 
     <div className="w-full min-h-screen relative overflow-hidden">
