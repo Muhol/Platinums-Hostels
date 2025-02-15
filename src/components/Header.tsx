@@ -4,7 +4,7 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { Grechen_Fuemen} from "next/font/google";
+// import { Grechen_Fuemen} from "next/font/google";
 
 // const roboto = Grechen_Fuemen({subsets:['latin'], weight:['400']})
 
