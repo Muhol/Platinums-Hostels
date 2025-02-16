@@ -61,9 +61,9 @@ function Header() {
           <li className=" flex justify-center text-center border-l h-[30px] items-center flex-1 hover:text-blue transition-all duration-150">
             <Link href="#">Rooms & Pricing</Link>
           </li>
-          <li className=" flex justify-center text-center border-l h-[30px] items-center flex-1 hover:text-blue transition-all duration-150">
+          {/* <li className=" flex justify-center text-center border-l h-[30px] items-center flex-1 hover:text-blue transition-all duration-150">
             <Link href="#">Booking</Link>
-          </li>
+          </li> */}
           <li className=" flex justify-center text-center border-l h-[30px] items-center flex-1 hover:text-blue transition-all duration-150">
             <Link href="#">Contact Us</Link>
           </li>
@@ -95,9 +95,9 @@ function Header() {
           <Link href="#" className="text-white text-lg hover:text-green-400">
             Rooms & Pricing
           </Link>
-          <Link href="#" className="text-white text-lg hover:text-green-400">
+          {/* <Link href="#" className="text-white text-lg hover:text-green-400">
             Booking
-          </Link>
+          </Link> */}
           <Link href="#" className="text-white text-lg hover:text-green-400">
             Contact Us
           </Link>
