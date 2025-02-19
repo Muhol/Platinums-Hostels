@@ -10,9 +10,9 @@ function Footer() {
         <div className="max-w-[1400px] w-full flex flex-col md:flex-row gap-[30px] ">
             <div className=" py-[50px]  flex flex-col justify-center gap-[20px]  px-[30px]">
                 <h1 className=' text-xl '>Contact Us</h1>
-                <p className='flex gap-[20] text-gray-300' > <Image src={"/icons/location-light.svg"} alt='' height={20} width={20}/> <span className='hidden md:block' > Location:</span> <a className='text-blue hover:text-orange-300' href="https://www.google.com/maps/place/KWOSHCOM/@-1.3921042,36.7711031,20.05z/data=!4m6!3m5!1s0x182f05004976207b:0x1933d8d75b758f57!8m2!3d-1.3921715!4d36.7710521!16s%2Fg%2F11wb1dtjcn!5m1!1e1?entry=ttu&g_ep=EgoyMDI1MDIxNy4wIKXMDSoASAFQAw%3D%3D">  Maasai Lodge Road, Ongata Rongai</a> </p>
-                <p className='flex gap-[20] text-gray-300' ><Image src={"/icons/call-light.svg"} alt='' height={20} width={20}/><span className='hidden md:block' > Phone: </span>+254 722 123 456</p>
-                <p className='flex gap-[20] text-gray-300' >
+                <p className='flex gap-[20px] items-center text-gray-300' > <Image src={"/icons/location-light.svg"} alt='' height={20} width={20}/> <span className='hidden md:block' > Location:</span> <a className='text-blue hover:text-orange-300' href="https://www.google.com/maps/place/KWOSHCOM/@-1.3921042,36.7711031,20.05z/data=!4m6!3m5!1s0x182f05004976207b:0x1933d8d75b758f57!8m2!3d-1.3921715!4d36.7710521!16s%2Fg%2F11wb1dtjcn!5m1!1e1?entry=ttu&g_ep=EgoyMDI1MDIxNy4wIKXMDSoASAFQAw%3D%3D">  Maasai Lodge Road, Ongata Rongai</a> </p>
+                <p className='flex gap-[20px] items-center text-gray-300' ><Image src={"/icons/call-light.svg"} alt='' height={20} width={20}/><span className='hidden md:block' > Phone: </span>+254 722 123 456</p>
+                <p className='flex gap-[20px] items-center text-gray-300' >
                     <Image src={"/icons/mail-light.svg"} alt='' height={20} width={20}/>
                     Email: <a href="#" className='text-blue hover:text-orange-300'>info@example.com</a>
                 </p>
