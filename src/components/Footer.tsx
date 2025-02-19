@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 // type Props = {}
@@ -13,27 +14,27 @@ function Footer() {
                 <p className='flex gap-[20] text-gray-300' ><Image src={"/icons/call-light.svg"} alt='' height={20} width={20}/><span className='hidden md:block' > Phone: </span>+254 722 123 456</p>
                 <p className='flex gap-[20] text-gray-300' >
                     <Image src={"/icons/mail-light.svg"} alt='' height={20} width={20}/>
-                    Email: <a href="mailto:info@example.com" className='text-blue hover:text-orange-300'>info@example.com</a>
+                    Email: <a href="#" className='text-blue hover:text-orange-300'>info@example.com</a>
                 </p>
                 <p className='text-gray-300' >Office Hours: Mon-Sat (8 AM - 6 PM)</p>
             </div>
             <div className=" py-[50px] flex flex-col items-conter justify-center gap-[20] border-y md:border-y-0 md:border-x border-white px-[30]">
                 <h1 className='place-self-center' >Quick Links</h1>
                 <ul className='flex flex-col md:items-center gap-[20] md:min-w-[400]' >
-                    <li><a className=' text-gray-300 hover:text-orange-300' href="/">Home</a></li>
-                    <li><a className=' text-gray-300 hover:text-orange-300' href="/Rooms&Pricing">Rooms & Pricing</a></li>
-                    <li><a className=' text-gray-300 hover:text-orange-300' href="/Booking">Booking</a></li>
-                    <li><a className=' text-gray-300 hover:text-orange-300' href="/contact-us">Contact Us</a></li>
-                    <li><a className=' text-gray-300 hover:text-orange-300' href="/FAQs">FAQs</a></li>
-                    <li><a className=' text-gray-300 hover:text-orange-300' href="/privacy-policy">Privacy Policy</a></li>
+                    <li><Link className=' text-gray-300 hover:text-orange-300' href="/">Home</Link></li>
+                    <li><Link className=' text-gray-300 hover:text-orange-300' href="/Rooms&Pricing">Rooms & Pricing</Link></li>
+                    <li><Link className=' text-gray-300 hover:text-orange-300' href="/Booking">Booking</Link></li>
+                    <li><Link className=' text-gray-300 hover:text-orange-300' href="/contact-us">Contact Us</Link></li>
+                    <li><Link className=' text-gray-300 hover:text-orange-300' href="/FAQs">FAQs</Link></li>
+                    <li><Link className=' text-gray-300 hover:text-orange-300' href="/privacy-policy">Privacy Policy</Link></li>
                 </ul>
             </div>
             <div className=" py-[50px]  flex flex-col gap-[20]  px-[30]">
                 <h1>Follow Us</h1>
                 <div className="flex gap-[20] md:gap-[50px] ">
-                    <a href="" className='border md:border-none hover:bg-blue transition-colors duration-300 p-[9px] rounded-3xl md:rounded-2xl ' ><Image src={"/icons/facebook-light.svg"} alt='' height={30} width={30}/></a>
-                    <a href="" className='border md:border-none hover:bg-blue transition-colors duration-300 p-[9px] rounded-3xl md:rounded-2xl ' ><Image src={"/icons/instagram-light.svg"} alt='' height={30} width={30}/></a>
-                    <a href="" className='border md:border-none hover:bg-blue transition-colors duration-300 p-[9px] rounded-3xl md:rounded-2xl ' ><Image src={"/icons/twitter-light.svg"} alt='' height={30} width={30}/></a>
+                    <a href="#" className='border md:border-none hover:bg-blue transition-colors duration-300 p-[9px] rounded-3xl md:rounded-2xl ' ><Image src={"/icons/facebook-light.svg"} alt='' height={30} width={30}/></a>
+                    <a href="#" className='border md:border-none hover:bg-blue transition-colors duration-300 p-[9px] rounded-3xl md:rounded-2xl ' ><Image src={"/icons/instagram-light.svg"} alt='' height={30} width={30}/></a>
+                    <a href="#" className='border md:border-none hover:bg-blue transition-colors duration-300 p-[9px] rounded-3xl md:rounded-2xl ' ><Image src={"/icons/twitter-light.svg"} alt='' height={30} width={30}/></a>
                 </div>
             </div>
         </div>
