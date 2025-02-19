@@ -16,7 +16,7 @@ export default function Home() {
       <WhyChooseUs/>
       </section>
       {/* Call to Action */}
-      <section className="bg-gray-400 py-[60] w-screen">
+      <section className="bg-gray-400 py-[100px] w-screen">
         <div className=" flex justify-center">
           <button className="flex gap-[20] items-center hover:bg-light_green bg-blue text-white font-semibold px-8 py-3 rounded-full text-lg shadow-md transition-all duration-200 ">
             <p> Book Your Stay Now </p><Image src={"/icons/arrow-right.svg"} alt="" height={30} width={30}/>
@@ -27,7 +27,7 @@ export default function Home() {
       <AboutUs/>
       </section>
       {/* Call to Action */}
-      <section className="bg-gray-950 py-[60] w-screen flex justify-center" >
+      <section className="bg-gray-950 w-screen flex justify-center py-[100px]" >
       <motion.button
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
