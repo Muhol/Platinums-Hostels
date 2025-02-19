@@ -19,7 +19,7 @@ function Header() {
   // Track Scroll for Navbar Transparency
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 100);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -30,16 +30,16 @@ function Header() {
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className={`w-[calc(100vw-30px)] rounded-lg place-self-center mx-[10px] z-50 fixed top-[10px] h-[100px] transition-all duration-300 px-[30px] md:px-[50px] lg:px-[100px] xl:px-[170px]  ${
+      className={`fixed top-[0] md:absolute w-screen md:w-[calc(100vw-20px)] rounded-lg place-self-center md:mx-[10px] z-50  md:top-[10px] h-[80px] md:h-[100px] transition-all duration-300 px-[30px] md:px-[50px] lg:px-[100px] xl:px-[170px]  ${
         isScrolled
-          ? "backdrop-blur-md bg-black/60 shadow-lg"
-          : "backdrop-blur-md bg-black/40 "
+          ? "backdrop-blur-md bg-black/20 shadow-lg"
+          : "backdrop-blur-md bg-black/20 "
       } flex items-center px-6 md:px-10 lg:px-16 xl:px-24`}
     >
       {/* Logo */}
       <div className="  flex-1 ">
         <Image
-          className="mix-blend-multiply"
+          className=""
           src="/images/logo-removebg.png"
           alt="Platinum Hostels Logo"
           width={80}

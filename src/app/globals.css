@@ -8,6 +8,7 @@
   --translusent_green: #00360044;
   --translusent_black: #00000057;
   --translusent_lightblack: #00000021;
+  --translusent_lightbg: #c9ccd3;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,16 +20,13 @@
 }
 
 html, body {
-  /* color: var(--foreground); */
-  /* background: var(--background); */
   font-family: 'Inter', sans-serif;
   overscroll-behavior: contain;
-  /* scroll-behavior: smooth; */
-  /* font-family: Arial, Helvetica, sans-serif; */
 }
 
 /* custom scrollbar */
 ::-webkit-scrollbar{
+  display: none;
   width: 10px;
 }
 ::-webkit-scrollbar-track{
@@ -42,9 +40,10 @@ html, body {
 
 /* animations */
 .scaleUp{
-  animation: scale-up linear;
+    animation: scale-up linear;
     animation-timeline: view();
-    animation-range: cover 400px;
+    animation-range-start: 300px;
+    animation-range-end: 1000px;
 }
 
 @keyframes scale-up{
@@ -52,7 +51,6 @@ html, body {
     transform: scale(1);
   }
   to{
-    transform: scale(1.2);
-    bottom: -90px;
+    transform: scale(1.5);
   }
 }

@@ -35,35 +35,27 @@ function WhyChooseUs () {
     ]
   return (
    
-    <div className="bg-gradient-to-br from-green-500 to-dark_green flex justify-center  min-h-screen py-20 px-6 text-white">
+    <div className=" flex justify-center  min-h-screen py-[110px] md:py-[60px] px-6 bg-slate-100 text-black">
     {/* Container */}
     <div className="max-w-[1400px] w-full text-center flex flex-col gap-12">
       
       {/* Section Title */}
       <h1 className="font-extrabold text-4xl md:text-5xl tracking-wide leading-snug">
-         Why Choose <span className="text-blue-400">Platinum Hostels?</span>
+         Why Choose <span className="text-blue">Platinum Hostels?</span>
       </h1>
   
       {/* Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 place-items-center">
+      <div className="flex flex-wrap items-center justify-center  gap-10 place-items-center">
         {content.map((item, index) => (
           <div
             key={index}
-            className="w-full max-w-[400px] h-auto bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-lg flex flex-col items-center text-center p-8 transition-all duration-300 hover:shadow-2xl hover:scale-105"
+            className="max-w-[400px] h-auto md:min-h-[300px] bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-lg flex flex-col items-center md:justify-center text-center p-8 transition-all duration-300 hover:shadow-2xl hover:scale-105"
           >
-            <h1 className="font-bold text-2xl text-white mb-4">{item.head}</h1>
-            <p className="font-medium text-lg text-gray-300">{item.desc}</p>
+            <h1 className="font-bold text-2xl text-blue mb-4">{item.head}</h1>
+            <p className="font-medium text-lg text-gray-800">{item.desc}</p>
           </div>
         ))}
-      </div>
-  
-      {/* Call to Action */}
-      <div className="mt-10">
-        <button className="bg-light_green hover:bg-blue text-white font-semibold px-8 py-3 rounded-full text-lg shadow-md transition-all duration-300 hover:scale-105">
-          Book Your Stay Now
-        </button>
-      </div>
-  
+      </div>      
     </div>
   </div>
   

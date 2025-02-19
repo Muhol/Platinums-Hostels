@@ -1,7 +1,6 @@
 
 "use client";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import React from 'react'
 
 // type Props = {}
@@ -10,14 +9,14 @@ function AboutUs() {
   return (
 
 
-    <div className="flex flex-col items-center bg-gradient-to-br from-gray-900 to-gray-700 bg-slate-50 text-white py-20 px-6">
+    <div className="flex lg:min-h-screen flex-col items-center bg-gradient-to-br from-gray-900 to-gray-700 bg-slate-50 text-white py-[120px]  px-6">
       {/* Container */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true }}
-        className="max-w-[1400px] w-full flex flex-col gap-16"
+        className="max-w-[1400px] w-full flex flex-col gap-16 md:gap-6"
       >
         {/* About Us Section */}
         <motion.div
@@ -25,12 +24,12 @@ function AboutUs() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8 }}
           viewport={{ once: true }}
-          className="flex flex-col gap-8"
+          className="flex flex-col gap-8 lg:max-h-screen "
         >
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-wide text-center md:text-left">
             About <span className="text-blue">Platinum Hostels</span>
           </h1>
-          <div className="max-w-[850px] text-lg leading-relaxed space-y-6">
+          <div className="max-w-[950px] text-lg leading-relaxed space-y-6">
             <p>
               At <span className="text-blue font-semibold">Platinum Hostels</span>, we understand that where you live plays a crucial role in your comfort, productivity, and overall well-being. That’s why we have designed a living space that combines{" "}
               <span className="text-blue font-medium">convenience, security, and a strong sense of community</span>.
@@ -48,7 +47,7 @@ function AboutUs() {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20 shadow-lg"
+          className="  bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20 shadow-lg"
         >
           <h2 className="text-2xl font-bold mb-3 text-blue">✨ What We Offer:</h2>
           <ul className="space-y-3 text-gray-300">
@@ -88,22 +87,15 @@ function AboutUs() {
           </h1>
           <div className="text-lg leading-relaxed space-y-6">
             <p>
-              At **Platinum Hostels**, our mission is simple: **to provide a high-quality, safe, and comfortable living experience that enhances the lives of our residents**.
+              At <span className="text-blue" > Platinum Hostels</span>, our mission is simple: to provide a high-quality, safe, and comfortable living experience that enhances the lives of our residents.
             </p>
             <p>
-              We strive to offer a **home-like atmosphere** that allows students and professionals to focus on their goals without worrying about accommodation challenges. We recognize that a great living space is more than just a room—it’s a **place where you feel supported, inspired, and secure**.
+              We strive to offer a home-like atmosphere that allows students and professionals to focus on their goals without worrying about accommodation challenges. We recognize that a great living space is more than just a room—it’s a place where you feel supported, inspired, and secure.
             </p>
           </div>
+          </motion.div>
+        
         </motion.div>
-        <motion.button
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{delay:0.5, duration:0.8}}
-        className=' self-center flex items-center gap-4 bg-blue hover:bg-light_green transition-all duration-300 text-white px-[20px] py-[10px] rounded-3xl my-[50px] '
-      >
-        Book a Room Today <Image src={"/icons/arrow-right.svg"} alt="" width={25} height={25} />
-      </motion.button>
-      </motion.div>
     </div>
   );
 }

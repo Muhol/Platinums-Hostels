@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import { Josefin_Sans } from "next/font/google"
+import Footer from "@/components/Footer";
+
 
 const roboto = Josefin_Sans({subsets:['latin'], weight:["100","300","400"]})
 
@@ -21,11 +23,12 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={` ${roboto.className} overflow-x-hidden w-screen min-h-screen `}>
+      <body className={` ${roboto.className} overflow-x-hidden w-screen h-full `}>
         <Header />
         <main>
           {children}
         </main>
+        <Footer/>
       </body>
     </html>
   );

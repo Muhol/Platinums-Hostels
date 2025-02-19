@@ -19,6 +19,7 @@ export default {
         white: "#FFFFFF ",
         dark_green: "#003600",
         light_green: "var(--lightgreen)",
+        light_bg: "var(--translusent_lightbg)",
       },
     },
   },
