@@ -81,36 +81,7 @@ function WhyChooseUs () {
 
   // <-----------<PRECIOUS VERSION>--------------->
 
-  //   <div className=" flex justify-center  min-h-screen py-[110px] md:py-[60px] px-6 bg-gray-100 text-black">
-  //   {/* Container */}
-  //   <div className="max-w-[1400px] w-full text-center flex flex-col gap-12">
-      
-  //     {/* Section Title */}
-  //     <h1 className="font-extrabold text-4xl md:text-5xl tracking-wide leading-snug">
-  //        Why Choose <span className="text-blue">Platinum Hostels?</span>
-  //     </h1>
   
-  //     {/* Cards Grid */}
-  //     <div className="flex flex-wrap items-center justify-center  gap-10 place-items-center">
-  //       {content.map((item, index) => (
-  //         <div
-  //           key={index}
-  //           className="relative max-w-[400px] h-auto md:min-h-[320px] backdrop-blur-xl borde rounded-3xl shadow-2xl flex flex-col items-center md:justify-center text-center  transition-all duration-300 hover:shadow-2xl "
-  //           // className="relative max-w-[400px] h-auto md:min-h-[320px] backdrop-blur-xl border border-white/20 rounded-3xl shadow-lg flex flex-col items-cente md:justify-cente text-center  transition-all duration-300 hover:shadow-2xl "
-  //         >
-  //           <Image src={item.image} alt='' layout='fill' objectFit='cover' className='-z-10 rounded-3xl' />
-  //           <div className="w-full flex-1 min-h-full p-8 rounded-3xl bg-black/80 flex flex-col gap-[30px] items-center justify-center">
-
-  //             <h1 className="font-bold text-2xl text-blue mb-4">{item.head}</h1>
-  //             <p className="font-medium text-lg text-white">{item.desc}</p>
-  //           </div>
-  //         </div>
-  //       ))}
-  //     </div>      
-  //   </div>
-  // </div>
-  
-
   )
 }
 
