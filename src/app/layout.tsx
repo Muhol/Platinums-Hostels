@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/Header";
-import { Josefin_Sans } from "next/font/google"
-import Footer from "@/components/Footer";
+import Header from "@/components/common/Header";
+import { Josefin_Sans, Figtree , Nunito } from "next/font/google"
+import Footer from "@/components/common/Footer";
 
 
 const roboto = Josefin_Sans({subsets:['latin'], weight:["100","300","400"]})
+const barlow = Nunito({subsets:['latin'], weight:['300','400','600']})
 
 export const metadata: Metadata = {
   // title: "Create Next App",
@@ -23,7 +24,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={` ${roboto.className} overflow-x-hidden w-screen h-full `}>
+      <body className={` ${barlow.className} overflow-x-hidden w-screen h-full `}>
         <Header />
         <main>
           {children}
