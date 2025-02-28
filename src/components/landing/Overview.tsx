@@ -12,7 +12,7 @@ function Overview() {
             <span className='md:hidden font-bold text-3xl ' >Welcome</span> 
             <p className='text-center'>Platinum Hostels offers a secure, comfortable, and student-friendly living space designed to meet 
                your needs. Nestled in the heart of Rongai Maasai Lodge near NIBS, our hostel provides the perfect 
-               balance of privacy, community, and convenience. Whether you're a student or a working professional, 
+               balance of privacy, community, and convenience. Whether you&apos;re a student or a working professional, 
                we ensure a stress-free stay with fully furnished rooms, high-speed WiFi, study areas, and 24/7 
                security.
             </p>
