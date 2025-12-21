@@ -33,8 +33,8 @@ function Header() {
   // If we are on Home, start transparent (glassy text), then become white on scroll
   // If not on Home, always be white
   const headerBgClass = isHome 
-    ? (isScrolled ? "bg-white shadow-md" : "bg-transparent") 
-    : "bg-white shadow-md";
+    ? (isScrolled ? "bg-white/80 backdrop-blur shadow shadow-xl shadow-black/5 " : "bg-transparent") 
+    : "bg-slate-50/60 shadow shadow-gray-500/5 backdrop-blur saturate ";
     
   // Text color needs to be white on transparent home, black otherwise
   const textColorClass = isHome && !isScrolled ? "text-white" : "text-gray-900";
@@ -70,7 +70,7 @@ function Header() {
             <Link 
               key={idx} 
               href={link.href}
-              className={`font-medium text-[16px] hover:text-blue transition-colors relative py-1
+              className={`font-bold text-[16px] hover:text-blue transition-colors relative py-1
                 ${pathname === link.href ? "font-bold text-blue" : ""}
                 ${pathname === link.href && "after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-blue"}
               `}
