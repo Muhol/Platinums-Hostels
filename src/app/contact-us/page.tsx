@@ -118,7 +118,7 @@ function ContactPage() {
         >
           <h1 className='text-[32px] md:text-[42px] font-bold text-gray-900 mb-4'>Get In Touch</h1>
           <p className='text-lg md:text-xl text-gray-600 max-w-[700px] mx-auto'>
-            Have questions about our hostels? We're here to help! Reach out to us and we'll get back to you as soon as possible.
+            Have questions about our hostels? We&apos;re here to help! Reach out to us and we&apos;ll get back to you as soon as possible.
           </p>
         </motion.div>
 
@@ -191,7 +191,7 @@ function ContactPage() {
             {submitSuccess && (
               <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg mb-6">
                 <p className='font-semibold'>Message sent successfully!</p>
-                <p className='text-sm'>We'll get back to you soon.</p>
+                <p className='text-sm'>We&apos;ll get back to you soon.</p>
               </div>
             )}
 

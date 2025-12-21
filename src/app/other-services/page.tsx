@@ -165,7 +165,7 @@ function OtherServicesPage() {
               </div>
               <div>
                 <h4 className='font-semibold mb-2'>Affordable Pricing</h4>
-                <p className='text-gray-600 text-sm'>Competitive rates designed with students' budgets in mind.</p>
+                <p className='text-gray-600 text-sm'>Competitive rates designed with students&apos; budgets in mind.</p>
               </div>
             </div>
             <div className="flex gap-4">

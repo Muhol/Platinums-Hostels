@@ -196,7 +196,7 @@ function RoomDetailsPage() {
                            Our Single Room Large offers the ultimate student living experience. Designed for those who appreciate their own space, this room comes fully furnished with a comfortable bed, a dedicated study area with a desk and chair, and ample storage for all your belongings.
                          </p>
                          <p className="text-gray-600 leading-relaxed">
-                           The room features large windows that let in plenty of natural light, creating a bright and airy atmosphere perfect for studying or relaxing. With high-speed internet included, you'll never miss a deadline or a video call with family.
+                           The room features large windows that let in plenty of natural light, creating a bright and airy atmosphere perfect for studying or relaxing. With high-speed internet included, you&apos;ll never miss a deadline or a video call with family.
                          </p>
                        </div>
                      </motion.div>

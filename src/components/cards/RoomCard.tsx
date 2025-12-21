@@ -7,11 +7,10 @@ type RoomCardProps = {
   title: string;
   price: string;
   image: string;
-  slug?: string;
   features?: string[];
 }
 
-function RoomCard({ title, price, image, slug = "single-room-large", features }: RoomCardProps) {
+function RoomCard({ title, price, image, features }: RoomCardProps) {
 
   return (
     <div title={title} className='bg-white flex flex-col w-[300px] h-[420px] p-[0px] rounded-lg border group hover:shadow-2xl transition-all duration-300 overflow-hidden' >

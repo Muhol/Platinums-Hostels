@@ -77,7 +77,7 @@ export default function Home() {
       <section className="bg-white/90 backdrop-blur-m w-full flex justify-center py-[80px] shadow-2xl transition-all" >
         <div className="flex flex-col items-center gap-6 text-center px-4">
           <h2 className="text-3xl font-bold text-gray-800">Ready to Book Your Room?</h2>
-          <p className="text-gray-600 max-w-lg mb-4">Don't miss out on the best student accommodation in Ongata Rongai. Spaces fill up fast!</p>
+          <p className="text-gray-600 max-w-lg mb-4">Don&apos;t miss out on the best student accommodation in Ongata Rongai. Spaces fill up fast!</p>
           <Link href={"/Rooms&Pricing"}>
             <motion.button 
               initial={{ y: 20, opacity: 0 }}
