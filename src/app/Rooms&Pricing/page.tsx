@@ -93,7 +93,7 @@ function Rooms() {
               title={room.title}
               price={room.price}
               image={room.image}
-              slug={room.slug}
+              // slug={room.slug}
               features={room.features}
             />
           ))}
