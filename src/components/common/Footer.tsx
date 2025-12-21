@@ -1,48 +1,101 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-
-// type Props = {}
+import { MapPin, Phone, Mail, Facebook, Instagram, Twitter, Clock } from 'lucide-react'
 
 function Footer() {
   return (
-    <div className='w-screen pt-[60px] flex flex-col bg-gray-900 text-white items-center gap-[40px] '>
-    {/* // <div className='w-screen py-[60px] flex flex-col bg-gradient-to-b from-blue to-black/50 text-white items-center gap-[40px] '> */}
-        <div className="max-w-[1400px] w-full flex flex-col lg:flex-row md:flex-wrap lg:flex-nowrap gap-[30px] ">
-            <div className=" py-[50px]  flex flex-col justify-center md:items-center lg:items-start gap-[20px] min-w-[360px] px-[30px] ">
-                <h1 className=' text-xl '>Contact Us</h1>
-                <p className='flex gap-[20px] items-center text-white' > <Image src={"/icons/location-light.svg"} alt='' height={20} width={20}/> <span className='hidden md:block' > Location:</span> <a className='text-blue hover:text-orange-300' href="https://www.google.com/maps/place/KWOSHCOM/@-1.3921042,36.7711031,20.05z/data=!4m6!3m5!1s0x182f05004976207b:0x1933d8d75b758f57!8m2!3d-1.3921715!4d36.7710521!16s%2Fg%2F11wb1dtjcn!5m1!1e1?entry=ttu&g_ep=EgoyMDI1MDIxNy4wIKXMDSoASAFQAw%3D%3D">  Maasai Lodge Road, Ongata Rongai</a> </p>
-                <p className='flex gap-[20px] items-center text-white' ><Image src={"/icons/call-light.svg"} alt='' height={20} width={20}/><span className='hidden md:block' > Phone: </span>+254 722 123 456</p>
-                <p className='flex gap-[20px] items-center text-white' >
-                    <Image src={"/icons/mail-light.svg"} alt='' height={20} width={20}/>
-                    Email: <a href="#" className='text-blue hover:text-orange-300'>info@example.com</a>
+    <footer className='w-full pt-16 pb-8 bg-gray-900 text-gray-300'>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
+            
+            {/* Brand & Social */}
+            <div className="flex flex-col gap-6">
+                <div className="flex items-center gap-3">
+                    <div className="relative w-12 h-12 rounded-full overflow-hidden p-1">
+                        <Image src="/images/logo-removebg.png" alt="Platinum Hostels" fill className="object-contain brightness-0 invert" />
+                    </div>
+                    <span className="text-2xl font-bold text-white tracking-wide">Platinum Hostels</span>
+                </div>
+                <p className="text-gray-400 leading-relaxed max-w-sm">
+                    Premium student accommodation in Ongata Rongai. Safe, comfortable, and conducive for your academic success.
                 </p>
-                <p className='text-white' >Office Hours: Mon-Sat (8 AM - 6 PM)</p>
+                <div className="flex gap-4 mt-2">
+                    <a href="#" className="p-2 bg-gray-800 rounded-full hover:bg-blue hover:text-white transition-all duration-300 group">
+                        <Facebook size={20} className="group-hover:scale-110 transition-transform" />
+                    </a>
+                    <a href="#" className="p-2 bg-gray-800 rounded-full hover:bg-pink-600 hover:text-white transition-all duration-300 group">
+                        <Instagram size={20} className="group-hover:scale-110 transition-transform" />
+                    </a>
+                    <a href="#" className="p-2 bg-gray-800 rounded-full hover:bg-sky-500 hover:text-white transition-all duration-300 group">
+                        <Twitter size={20} className="group-hover:scale-110 transition-transform" />
+                    </a>
+                </div>
             </div>
-            <div className=" py-[50px] flex flex-col items-conter justify-center gap-[20px] border-y lg:border-y-0 lg:border-x border-white px-[30px]">
-                <h1 className=' text-xl place-self-center' >Quick Links</h1>
-                <ul className='flex flex-col md:items-center gap-[20px] md:min-w-[400px]' >
-                    <li><Link className=' text-white hover:text-orange-300' href="/">Home</Link></li>
-                    <li><Link className=' text-white hover:text-orange-300' href="/Rooms&Pricing">Rooms & Pricing</Link></li>
-                    <li><Link className=' text-white hover:text-orange-300' href="/Booking">Booking</Link></li>
-                    <li><Link className=' text-white hover:text-orange-300' href="/contact-us">Contact Us</Link></li>
-                    <li><Link className=' text-white hover:text-orange-300' href="/FAQs">FAQs</Link></li>
-                    <li><Link className=' text-white hover:text-orange-300' href="/privacy-policy">Privacy Policy</Link></li>
+
+            {/* Quick Links */}
+            <div>
+                <h3 className="text-white text-lg font-semibold mb-6">Quick Links</h3>
+                <ul className="space-y-4">
+                    <li>
+                        <Link href="/" className="hover:text-blue hover:pl-2 transition-all duration-300 inline-block">Home</Link>
+                    </li>
+                    <li>
+                        <Link href="/Rooms&Pricing" className="hover:text-blue hover:pl-2 transition-all duration-300 inline-block">Rooms & Pricing</Link>
+                    </li>
+                    <li>
+                        <Link href="/contact-us" className="hover:text-blue hover:pl-2 transition-all duration-300 inline-block">Contact Us</Link>
+                    </li>
+                    <li>
+                        <Link href="/other-services" className="hover:text-blue hover:pl-2 transition-all duration-300 inline-block">Other Services</Link>
+                    </li>
                 </ul>
             </div>
-            <div className=" py-[50px]  flex flex-col md:items-center lg:items-start gap-[20px] px-[30px]">
-                <h1 className=' text-xl '>Follow Us</h1>
-                <div className="flex flex-wrap gap-[20px] md:gap-[50px] ">
-                    <a href="#" className='border md:border-none hover:bg-blue transition-colors duration-300 p-[9px] rounded-3xl md:rounded-2xl ' ><Image src={"/icons/facebook-light.svg"} alt='' height={30} width={30}/></a>
-                    <a href="#" className='border md:border-none hover:bg-blue transition-colors duration-300 p-[9px] rounded-3xl md:rounded-2xl ' ><Image src={"/icons/instagram-light.svg"} alt='' height={30} width={30}/></a>
-                    <a href="#" className='border md:border-none hover:bg-blue transition-colors duration-300 p-[9px] rounded-3xl md:rounded-2xl ' ><Image src={"/icons/twitter-light.svg"} alt='' height={30} width={30}/></a>
+
+            {/* Contact Info */}
+            <div>
+                <h3 className="text-white text-lg font-semibold mb-6">Contact Us</h3>
+                <ul className="space-y-6">
+                    <li className="flex items-start gap-4">
+                        <MapPin className="text-blue shrink-0 mt-1" size={20} />
+                        <div>
+                            <span className="block text-white font-medium mb-1">Location</span>
+                            <a href="https://goo.gl/maps/..." target="_blank" rel="noopener noreferrer" className="hover:text-blue transition-colors">
+                                Maasai Lodge Road, Ongata Rongai
+                            </a>
+                        </div>
+                    </li>
+                    <li className="flex items-start gap-4">
+                        <Phone className="text-blue shrink-0 mt-1" size={20} />
+                        <div>
+                            <span className="block text-white font-medium mb-1">Phone</span>
+                            <a href="tel:+254722123456" className="hover:text-blue transition-colors">+254 722 123 456</a>
+                        </div>
+                    </li>
+                    <li className="flex items-start gap-4">
+                        <Mail className="text-blue shrink-0 mt-1" size={20} />
+                        <div>
+                            <span className="block text-white font-medium mb-1">Email</span>
+                            <a href="mailto:info@platinumhostels.com" className="hover:text-blue transition-colors">info@platinumhostels.com</a>
+                        </div>
+                    </li>
+                    <li className="flex items-center gap-4 text-sm bg-gray-800/50 p-3 rounded-lg border border-gray-800">
+                        <Clock className="text-light_green shrink-0" size={18} />
+                        <span>Mon-Sat: 8:00 AM - 6:00 PM</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div className="border-t border-gray-800 pt-8 mt-8">
+            <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center md:flex md:justify-between md:items-center text-sm text-gray-500">
+                <p>© {new Date().getFullYear()} Platinum Hostels. All Rights Reserved.</p>
+                <div className="flex gap-6 justify-center mt-4 md:mt-0">
+                    <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+                    <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
                 </div>
             </div>
         </div>
-        <div className="w-full py-[40px] md:py-[70px] bg-gray-950 flex justify-center">
-            <p className='text-gray-400'>© 2024 Platinum Hostels. All Rights Reserved. </p>
-        </div>
-    </div>
+    </footer>
   )
 }
 

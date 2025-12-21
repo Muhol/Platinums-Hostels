@@ -43,7 +43,7 @@ function WhyChooseUs () {
     ]
   return (
    
-  <div className=" flex justify-center min-h-screen pt-[40px] pb-[110px] md:pt-[10px] px-6 bg-transparent text-black">
+  <div className=" flex justify-center min-h-screen pt-[40px] pb-[110px] md:pt-[10px] px-6 text-black">
     {/* Container */}
     <div className="max-w-[1400px] w-full text-center flex flex-col gap-4 md:gap-12">
       
@@ -57,13 +57,13 @@ function WhyChooseUs () {
         {content.map((item, index) => (
           <div
             key={index}
-            className="group cursor-pointer md:min-w-[600px] md:max-w-[680px] h-auto md:min-h-[280px] backdrop-blur-xl p-5 rounded-xl shadow-2xl flex flex-wrap md:flex-nowrap gap-5 items-center justify-center text-center  transition-all duration-300 hover:shadow-2xl "
+            className="group cursor-pointer md:min-w-[600px] md:max-w-[680px] h-auto md:min-h-[280px] p-5 rounded-xl shadow-2xl flex flex-wrap md:flex-nowrap gap-5 items-center justify-center text-center  transition-all duration-300 hover:shadow-2xl "
             // className="relative max-w-[400px] h-auto md:min-h-[320px] backdrop-blur-xl border border-white/20 rounded-3xl shadow-lg flex flex-col items-cente md:justify-center text-center  transition-all duration-300 hover:shadow-2xl "
           >
               {/* <-----------<IMAGE>------------> */}
             <div className=" relative flex flex-row justify-center min-h-[240px] max-w-[300px] w-full min-w-[240px] ">
-              <Image src={item.image} alt='' layout='fill' objectFit='cover' className='-z-10 rounded-lg' />
-              <div className="bg-black/30 md:group-hover:flex-1 opacity-0 md:group-hover:opacity-100 transition-all duration-500 min-h-[100%] flex rounded-lg">
+              <Image src={item.image} alt='' layout='fill' objectFit='cover' className='-z-0 rounded-lg' />
+              <div className="bg-black/30 md:group-hover:flex-1 z-10 opacity-0 md:group-hover:opacity-100 transition-all duration-500 min-h-[100%] flex rounded-lg">
               </div>
             </div>
               {/* <-----------<CONTENT>------------> */}

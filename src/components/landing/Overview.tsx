@@ -5,7 +5,7 @@ import React from 'react'
 // function Overview({}: Props) {
 function Overview() {
   return (
-    <div className='w-full py-[40px] pb-[40px] lg:py-[60px] flex justify-center bg-gray-100 md:bg-gray-100 px-3'>
+    <div className='w-full py-[40px] pb-[40px] lg:py-[60px] flex justify-center bg-gray-100 md:bg-gray-200 px-3'>
         <div className="max-w-[890px] w-full bg-red-40 flex flex-col gap-2 items-center">
             {/* <h1 className='font-bold text-3xl ' >Overview</h1> */}
             <span className='hidden md:block font-bold text-3xl ' >Overview</span> 

@@ -12,28 +12,23 @@ const grechen_fuemen = Grechen_Fuemen({subsets:['latin'], weight:['400']})
 
 function HeroSection() {
   return (
-    <div className="w-full relative min-h-[400px] md:h-screen overflow-hidden flex flex-col bg-gray-50">
+    <div className="w-full relative min-h-[400px] md:h-screen overflow-hidden flex flex-col bg-transparent">
       {/* <-----------<COMMENTED ALTERNATIVE STYLE>-----------> */}
     {/* <div className="w-full relative h-screen md:h-screen overflow-hidden flex flex-col bg-transparent"> */}
-    {/* Background Image */}
+    {/* Background Image Container - Now Transparent */}
     <div className=" md:relative  md:h-[calc(100%-110px)]">
     {/* <div className=" md:relative h-full md:h-[calc(100%-110px)]"> */}
       
-      <Image
-        src="/images/Hostel-Image.jpg"
-        alt="Hostel Background"
-        layout="fill"
-        // objectFit=" cover"
-        className="z-0 object-cover md:object-cover"
-      />
-      <div className=" absolute pt-[140px] md:pt-[0] flex flex-col md:items-center md:justify-center inset-0 bg-black/70 md:bg-black/70 backdrop-filter sm:backdrop-blur-sm md:backdrop-blur-none z-10">
+      {/* Image removed to use global fixed background */}
+      
+      <div className=" absolute pt-[140px] md:pt-[0] flex flex-col md:items-center md:justify-center inset-0 bg-black/40 md:bg-black/40 backdrop-filter sm:backdrop-blur-sm md:backdrop-blur-none z-10">
       {/* Heading Text */}
         <div className="relative z-20 flex flex-col items-center md:justify-center h-full text-center px-6">
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="hidden md:block relative md:absolute md:bg-light_b md:bottom-[-90px] mt-[0] w-[200px] h-[200px] md:w-[300px] md:h-[300px] lg:w-[300px] lg:h-[300px] overflow-hidden rounded-full shadow-lg"
+            className="hidden md:block relative md:absolute md:bg-light_b md:bottom-[-90px] mt-[0] w-[200px] h-[200px] md:w-[300px] md:h-[300px] lg:w-[300px] lg:h-[300px] overflow-hidden rounded-full shadow-lg z-30"
           >
             <Image
               src="/images/logo.jpg"
@@ -93,6 +88,8 @@ function HeroSection() {
         </div>
       </div>
     </div>
+    {/* Bottom opaque white part */}
+    <div className="hidden md:block absolute bottom-0 w-full h-[110px] bg-white "></div>
   </div>
   )
 }
