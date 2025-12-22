@@ -7,6 +7,7 @@ import { Wifi, Bed, Monitor, Lock, Coffee, ShowerHead, ShieldCheck, Zap, Loader2
 import { useSearchParams } from 'next/navigation'
 import { RoomService } from '@/services/roomService'
 import { Room } from '@/types/room'
+import BookingModal from '@/components/modals/BookingModal'
 
 // Map of amenity strings to Lucide components
 const AMENITY_ICONS: Record<string, React.ElementType> = {
@@ -29,6 +30,7 @@ function RoomDetailsPage() {
   const [loading, setLoading] = useState(true);
   const [slide , setSlide] = useState(false);
   const [activeImage, setActiveImage] = useState("");
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchRoomData = async () => {
@@ -148,12 +150,12 @@ function RoomDetailsPage() {
                     <div className="bg-gray-50 rounded-xl p-6 border border-gray-100">
                       <div className="flex justify-between items-end mb-2">
                          <p className="text-gray-500">Monthly Rent</p>
-                         <p className="text-3xl font-bold text-blue">{room.price}</p>
+                         <p className="text-lg md:text-3xl font-bold text-blue">{room.price}</p>
                       </div>
                       {room.semesterPrice && (
                         <div className="flex justify-between items-end mb-4 border-b border-dashed border-gray-300 pb-4">
                             <p className="text-gray-500">Semester Price (Discounted)</p>
-                            <p className="text-xl font-bold text-green-600">{room.semesterPrice}</p>
+                            <p className="text-md md:text-xl font-bold text-green-600">{room.semesterPrice}</p>
                         </div>
                       )}
                       
@@ -183,13 +185,23 @@ function RoomDetailsPage() {
                          </div>
                       </div>
 
-                      <button disabled={room.isAvailable === false} className='w-full disabled:opacity-50 disabled:cursor-not-allowed rounded-xl text-white bg-blue hover:bg-blue/90 text-lg font-bold py-4 shadow-lg shadow-blue/20 active:scale-[0.98] transition-all duration-200' >
+                      <button 
+                        disabled={room.isAvailable === false} 
+                        onClick={() => setIsBookingModalOpen(true)}
+                        className='w-full disabled:opacity-50 disabled:cursor-not-allowed rounded-xl text-white bg-blue hover:bg-blue/90 text-lg font-bold py-4 shadow-lg shadow-blue/20 active:scale-[0.98] transition-all duration-200' 
+                      >
                           {room.isAvailable !== false ? 'Book This Room' : 'Join Waitlist'}
                       </button>
                       <p className='text-center text-xs text-gray-400 mt-3'>Secure your spot with a minimal deposit today</p>
                     </div>
                 </div>
             </div>
+
+            <BookingModal 
+              isOpen={isBookingModalOpen} 
+              onClose={() => setIsBookingModalOpen(false)} 
+              room={room} 
+            />
 
             {/* Middle Section: Amenities & Description */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-[40px] border-t border-gray-100 pt-[40px]">

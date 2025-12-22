@@ -16,7 +16,7 @@ function HeroSection() {
       {/* <-----------<COMMENTED ALTERNATIVE STYLE>-----------> */}
     {/* <div className="w-full relative h-screen md:h-screen overflow-hidden flex flex-col bg-transparent"> */}
     {/* Background Image Container - Now Transparent */}
-    <div className=" md:relative  md:h-[calc(100%-110px)]">
+    <div className=" md:relative md:h-[calc(100%-70px)]  lg:h-[calc(100%-110px)]">
     {/* <div className=" md:relative h-full md:h-[calc(100%-110px)]"> */}
       
       {/* Image removed to use global fixed background */}
@@ -28,7 +28,7 @@ function HeroSection() {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="hidden md:block relative md:absolute md:bg-light_b md:bottom-[-90px] mt-[0] w-[200px] h-[200px] md:w-[300px] md:h-[300px] lg:w-[300px] lg:h-[300px] overflow-hidden rounded-full shadow-lg z-30"
+            className="hidden lg:block relative md:absolute md:bg-light_b md:bottom-[-90px] mt-[0] w-[200px] h-[200px] md:w-[300px] md:h-[300px] lg:w-[300px] lg:h-[300px] overflow-hidden rounded-full shadow-lg z-30"
           >
             <Image
               src="/images/logo.jpg"
@@ -89,7 +89,7 @@ function HeroSection() {
       </div>
     </div>
     {/* Bottom opaque white part */}
-    <div className="hidden md:block absolute bottom-0 w-full h-[110px] bg-white "></div>
+    <div className="hidden md:block absolute bottom-0 w-full md:h-[70px] lg:h-[110px] bg-white "></div>
   </div>
   )
 }

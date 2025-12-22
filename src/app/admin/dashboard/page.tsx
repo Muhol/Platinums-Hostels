@@ -8,6 +8,9 @@ import { auth } from '@/lib/firebase';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { CldUploadButton } from 'next-cloudinary';
+import { BookingService } from '@/services/bookingService';
+import { Booking } from '@/types/booking';
+import { Calendar, Check, Ban } from 'lucide-react';
 
 // Available amenities matching the frontend icons
 const AVAILABLE_AMENITIES = [
@@ -93,8 +96,10 @@ const SEED_DATA = [
 
 export default function AdminDashboard() {
   const [rooms, setRooms] = useState<Room[]>([]);
+  const [bookings, setBookings] = useState<Booking[]>([]);
   const [loading, setLoading] = useState(true);
   const [isAdding, setIsAdding] = useState(false);
+  const [activeTab, setActiveTab] = useState<'rooms' | 'bookings'>('rooms');
   const router = useRouter();
 
 
@@ -119,7 +124,17 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     fetchRooms();
+    fetchBookings();
   }, []);
+
+  const fetchBookings = async () => {
+    try {
+      const data = await BookingService.getBookings();
+      setBookings(data);
+    } catch (error) {
+      console.error("Error fetching bookings:", error);
+    }
+  };
 
   const fetchRooms = async () => {
     setLoading(true);
@@ -189,6 +204,26 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleUpdateBookingStatus = async (id: string, status: Booking['status']) => {
+    try {
+      await BookingService.updateBookingStatus(id, status);
+      fetchBookings();
+    } catch (error) {
+      console.error("Error updating status:", error);
+    }
+  };
+
+  const handleDeleteBooking = async (id: string) => {
+    if (confirm('Delete this booking request?')) {
+      try {
+        await BookingService.deleteBooking(id);
+        fetchBookings();
+      } catch (error) {
+        console.error("Error deleting booking:", error);
+      }
+    }
+  };
+
   const handleEdit = (room: Room) => {
       setIsEditing(true);
       setCurrentRoomId(room.id!);
@@ -229,7 +264,7 @@ export default function AdminDashboard() {
       <div className="min-h-screen bg-gray-50 pb-20 pt-[120px]">
         <div className="max-w-6xl mx-auto px-6">
           
-          <div className="flex justify-between items-center mb-8">
+          <div className="flex justify-between md:items-center mb-8">
             <div>
                 <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
                 <p className="text-gray-500">Manage your hostel rooms and pricing</p>
@@ -240,21 +275,40 @@ export default function AdminDashboard() {
                         <Save size={18} /> Seed Data
                     </button>
                 )}
-                <button onClick={handleLogout} className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-100 transition-colors">
+                <button onClick={handleLogout} className="flex max-h-[40px] items-center gap-2 px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-100 transition-colors">
                     <LogOut size={18} /> Logout
                 </button>
             </div>
           </div>
 
+          {/* Tabs */}
+          <div className="flex gap-4 mb-8 border-b border-gray-200">
+            <button 
+              onClick={() => setActiveTab('rooms')}
+              className={`pb-4 px-6 font-bold text-lg transition-all ${activeTab === 'rooms' ? 'text-blue border-b-2 border-blue' : 'text-gray-400 hover:text-gray-600'}`}
+            >
+              Rooms & Listings
+            </button>
+            <button 
+              onClick={() => setActiveTab('bookings')}
+              className={`pb-4 px-6 font-bold text-lg transition-all flex items-center gap-2 ${activeTab === 'bookings' ? 'text-blue border-b-2 border-blue' : 'text-gray-400 hover:text-gray-600'}`}
+            >
+              Bookings {bookings.filter(b => b.status === 'pending').length > 0 && (
+                <span className="bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">{bookings.filter(b => b.status === 'pending').length}</span>
+              )}
+            </button>
+          </div>
+
           {/* Listings */}
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-8">
-            <div className="flex justify-between items-center mb-6">
-                <h2 className="text-xl font-bold">Current Rooms ({rooms.length})</h2>
+          {activeTab === 'rooms' ? (
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-8">
+              <div className="flex justify-between items-center mb-6">
+                  <h2 className="sm:text-lg md:text-xl font-bold">Current Rooms ({rooms.length})</h2>
                 <button 
                   onClick={() => isAdding ? resetForm() : setIsAdding(true)}
                   className={`flex items-center gap-2 px-4 py-2 ${isAdding ? 'bg-red-500 text-white' : 'bg-blue text-white'} rounded-lg hover:opacity-90 transition-colors`}
                 >
-                    {isAdding ? <X size={18} /> : <Plus size={18} />} 
+                    {isAdding ? <X size={18} /> : <div className='hidden md:block'> <Plus size={18} /></div>} 
                     {isAdding ? 'Cancel' : 'Add New Room'}
                 </button>
             </div>
@@ -440,9 +494,91 @@ export default function AdminDashboard() {
                             No rooms found. Add one or seed the database.
                         </div>
                     )}
-                </div>
-            )}
-          </div>
+                  </div>
+                )}
+            </div>
+          ) : (
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+               <div className="p-6 border-b border-gray-100">
+                  <h2 className="text-xl font-bold">Booking Requests</h2>
+                  <p className="text-sm text-gray-500">Manage incoming room reservations</p>
+               </div>
+               <div className="overflow-x-auto">
+                  <table className="w-full text-left">
+                    <thead className="bg-gray-50 text-gray-600 text-sm font-semibold">
+                      <tr>
+                        <th className="px-6 py-4">User Details</th>
+                        <th className="px-6 py-4">Room</th>
+                        <th className="px-6 py-4">Date</th>
+                        <th className="px-6 py-4">Status</th>
+                        <th className="px-6 py-4">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-100">
+                      {bookings.length > 0 ? bookings.map((booking) => (
+                        <tr key={booking.id} className="hover:bg-gray-50 transition-colors">
+                          <td className="px-6 py-4">
+                            <div className="font-bold text-gray-900">{booking.userName}</div>
+                            <div className="text-sm text-gray-500">{booking.userEmail}</div>
+                            <div className="text-sm text-gray-500">{booking.userPhone}</div>
+                          </td>
+                          <td className="px-6 py-4">
+                            <div className="font-semibold text-blue">{booking.roomTitle}</div>
+                            <div className="text-xs text-gray-400 capitalize">{booking.roomId}</div>
+                          </td>
+                          <td className="px-6 py-4 text-sm text-gray-600">
+                            <div className="flex items-center gap-2">
+                               <Calendar size={14} />
+                               {new Date(booking.createdAt).toLocaleDateString()}
+                            </div>
+                          </td>
+                          <td className="px-6 py-4">
+                            <span className={`px-3 py-1 rounded-full text-xs font-bold capitalize 
+                              ${booking.status === 'confirmed' ? 'bg-green-100 text-green-700' : 
+                                booking.status === 'cancelled' ? 'bg-red-100 text-red-700' : 
+                                'bg-yellow-100 text-yellow-700'}`}>
+                              {booking.status}
+                            </span>
+                          </td>
+                          <td className="px-6 py-4">
+                            <div className="flex gap-2">
+                              {booking.status === 'pending' && (
+                                <>
+                                  <button 
+                                    onClick={() => handleUpdateBookingStatus(booking.id, 'confirmed')}
+                                    className="p-2 text-green-600 hover:bg-green-50 rounded-lg transition-colors" title="Confirm"
+                                  >
+                                    <Check size={18} />
+                                  </button>
+                                  <button 
+                                    onClick={() => handleUpdateBookingStatus(booking.id, 'cancelled')}
+                                    className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors" title="Cancel"
+                                  >
+                                    <Ban size={18} />
+                                  </button>
+                                </>
+                              )}
+                              <button 
+                                onClick={() => handleDeleteBooking(booking.id)}
+                                className="p-2 text-gray-400 hover:text-red-500 hover:bg-gray-100 rounded-lg transition-colors" title="Delete Permanent"
+                              >
+                                <Trash2 size={18} />
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      )) : (
+                        <tr>
+                          <td colSpan={5} className="px-6 py-12 text-center text-gray-500">
+                            No booking requests found.
+                          </td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+               </div>
+            </div>
+          )}
         </div>
       </div>
     </ProtectedRoute>

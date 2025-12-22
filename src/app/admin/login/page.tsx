@@ -67,7 +67,7 @@ export default function AdminLogin() {
         
         {/* Login Form Section */}
         <motion.div 
-          className={`w-full md:flex-1 p-6 md:p-8 transition-opacity duration-300 ${!isLogin ? "opacity-20 pointer-events-none hidden md:block" : "opacity-100 block"}`}
+          className={`w-full md:flex-1 p-6 md:p-8 transition-opacity duration-300 ${!isLogin ? "opacity-50 pointer-events-none hidden md:block" : "opacity-100 block"}`}
         >
           <div className="text-center mb-8 w-full">
             <h2 className="text-black font-bold text-2xl md:text-xl mt-2">Please sign in to continue</h2>
@@ -130,7 +130,7 @@ export default function AdminLogin() {
 
         {/* Register Form Section */}
         <motion.div 
-          className={`w-full md:flex-1 p-6 md:p-8 transition-opacity duration-300 ${isLogin ? "opacity-20 pointer-events-none hidden md:block" : "opacity-100 block"}`}
+          className={`w-full md:flex-1 p-6 md:p-8 transition-opacity duration-300 ${isLogin ? "opacity-50 pointer-events-none hidden md:block" : "opacity-100 block"}`}
         >
           <div className="text-center mb-8">
             <h2 className="text-black font-bold text-2xl md:text-xl mt-2">Create an account</h2>
@@ -208,7 +208,7 @@ export default function AdminLogin() {
 
         {/* Toggle Panel (Desktop only) */}
         <motion.div 
-          className={`hidden md:flex absolute h-full w-1/2 bg-blue/50 backdrop-blur z-10 flex-col gap-5 items-center justify-center transition-all ease-in-out duration-700 ${isLogin? "translate-x-full rounded-r-[50px]":"translate-x-0 rounded-l-[50px]"}`}
+          className={`hidden md:flex absolute h-full w-1/2 bg-blue/30 backdrop-blur z-10 flex-col gap-5 items-center justify-center transition-all ease-in-out duration-700 ${isLogin? "translate-x-full rounded-r-[50px]":"translate-x-0 rounded-l-[50px]"}`}
         >
           <div className="relative w-[270px] h-[270px] rounded-full overflow-hidden p-1">
             <Image src="/images/logo-removebg.png" alt="Platinum Hostels" fill className="object-contain brightness-0 " />
