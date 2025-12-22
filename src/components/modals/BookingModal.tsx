@@ -57,7 +57,7 @@ export default function BookingModal({ isOpen, onClose, room }: BookingModalProp
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-black/60"
+            className="absolute inset-0 bg-black/30"
           />
 
           {/* Modal Content */}
@@ -65,7 +65,7 @@ export default function BookingModal({ isOpen, onClose, room }: BookingModalProp
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative bg-white/50 backdrop-blur w-full max-w-[500px] rounded-[10px] shadow-2xl overflow-hidden"
+            className="relative bg-white/60 backdrop-blur w-full max-w-[500px] rounded-[10px] shadow-2xl overflow-hidden"
           >
             {/* Header */}
             <div className="bg-blue/20 p-8 text-white relative">

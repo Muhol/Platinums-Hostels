@@ -188,7 +188,7 @@ function RoomDetailsPage() {
                       <button 
                         disabled={room.isAvailable === false} 
                         onClick={() => setIsBookingModalOpen(true)}
-                        className='w-full disabled:opacity-50 disabled:cursor-not-allowed rounded-xl text-white bg-blue hover:bg-blue/90 text-lg font-bold py-4 shadow-lg shadow-blue/20 active:scale-[0.98] transition-all duration-200' 
+                        className='w-full disabled:opacity-50 disabled:cursor-not-allowed rounded-full text-white bg-blue hover:bg-blue/90 text-lg font-bold py-4 shadow-lg shadow-blue/20 active:scale-[0.98] transition-all duration-200' 
                       >
                           {room.isAvailable !== false ? 'Book This Room' : 'Join Waitlist'}
                       </button>
