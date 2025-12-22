@@ -25,23 +25,13 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/20"></div> {/* Optional overlay for text readability check */}
       </div>
 
-      {/* <section className="">
-        <HeroSection/>
-      </section> */}
-
       <section className="">
         <HeroSection/>
       </section>
 
-      {/* Spacer to show background */}
-      {/* <div className="h-[50px] w-full bg-transparent"></div> */}
-
       <section className="w-full shadow-xl">
         <Overview />
       </section>
-
-      {/* Spacer */}
-      {/* <div className="h-[50px] w-full bg-transparent"></div> */}
 
       <section className="bg-white py-16 w-full shadow-xl">
         <WhyChooseUs/>
@@ -60,9 +50,6 @@ export default function Home() {
           </Link>
         </div>
       </section>
-
-      {/* Spacer */}
-      {/* <div className="h-[50px] w-full bg-transparent"></div> */}
 
       <section className="bg-white/5 py-6 w-full shadow-xl">
         <AboutUs/>

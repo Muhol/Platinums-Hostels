@@ -14,7 +14,11 @@ import { Booking } from "@/types/booking";
 const BOOKINGS_COLLECTION = "bookings";
 
 export const BookingService = {
-  // Create a new booking request
+  /**
+   * Creates a new booking request in the database.
+   * Sets initial status to 'pending' and adds a timestamp.
+   * @param booking - User details and room information.
+   */
   createBooking: async (booking: Omit<Booking, "id" | "createdAt" | "status">) => {
     const bookingData = {
       ...booking,
@@ -24,7 +28,10 @@ export const BookingService = {
     return await addDoc(collection(db, BOOKINGS_COLLECTION), bookingData);
   },
 
-  // Get all bookings (for admin)
+  /**
+   * Retrieves all booking requests, ordered by newest first.
+   * @returns Array of all bookings.
+   */
   getBookings: async (): Promise<Booking[]> => {
     const q = query(collection(db, BOOKINGS_COLLECTION), orderBy("createdAt", "desc"));
     const querySnapshot = await getDocs(q);
@@ -34,13 +41,20 @@ export const BookingService = {
     }));
   },
 
-  // Update booking status
+  /**
+   * Updates the status of a booking request.
+   * @param id - The ID of the booking to update.
+   * @param status - The new status (confirmed, cancelled, pending).
+   */
   updateBookingStatus: async (id: string, status: Booking['status']) => {
     const bookingRef = doc(db, BOOKINGS_COLLECTION, id);
     await updateDoc(bookingRef, { status });
   },
 
-  // Delete a booking
+  /**
+   * Permanently deletes a booking request from the database.
+   * @param id - The ID of the booking to delete.
+   */
   deleteBooking: async (id: string) => {
     const bookingRef = doc(db, BOOKINGS_COLLECTION, id);
     await deleteDoc(bookingRef);

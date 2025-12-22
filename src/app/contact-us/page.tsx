@@ -19,6 +19,10 @@ function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
 
+  /**
+   * Validates the contact form data.
+   * @returns {boolean} True if the form is valid, false otherwise.
+   */
   const validateForm = () => {
     const newErrors: {[key: string]: string} = {}
     
@@ -52,6 +56,10 @@ function ContactPage() {
     return Object.keys(newErrors).length === 0
   }
 
+  /**
+   * Handles the contact form submission.
+   * Sends data to Firestore via ContactService.
+   */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
@@ -64,6 +72,7 @@ function ContactPage() {
     try {
       await ContactService.addContact(formData)
       setSubmitSuccess(true)
+      // Reset form on success
       setFormData({
         name: '',
         email: '',
@@ -72,6 +81,7 @@ function ContactPage() {
         message: ''
       })
       
+      // Clear success message after 5 seconds
       setTimeout(() => {
         setSubmitSuccess(false)
       }, 5000)
@@ -83,6 +93,9 @@ function ContactPage() {
     }
   }
 
+  /**
+   * Updates form state as user types and clears field-specific errors.
+   */
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({
@@ -90,7 +103,6 @@ function ContactPage() {
       [name]: value
     }))
     
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors(prev => ({
         ...prev,

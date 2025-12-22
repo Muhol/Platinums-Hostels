@@ -106,7 +106,7 @@ export default function AdminDashboard() {
   const router = useRouter();
 
 
-  // Form State
+  // --- Form & UI State ---
   const [isEditing, setIsEditing] = useState(false);
   const [currentRoomId, setCurrentRoomId] = useState<string | null>(null);
   
@@ -130,6 +130,8 @@ export default function AdminDashboard() {
     fetchBookings();
     fetchContacts();
   }, []);
+
+  // --- Data Fetching ---
 
   const fetchContacts = async () => {
     try {
@@ -166,10 +168,12 @@ export default function AdminDashboard() {
     router.push('/admin/login');
   };
 
+  // --- Action Handlers ---
+
   const handleDelete = async (id: string) => {
     if (confirm('Are you sure you want to delete this room?')) {
       await RoomService.deleteRoom(id);
-      fetchRooms(); // Refresh
+      fetchRooms();
     }
   };
 
@@ -264,7 +268,6 @@ export default function AdminDashboard() {
           isAvailable: room.isAvailable ?? true,
           images: room.images || (room.image ? [room.image] : [])
       });
-      // Scroll to top
       window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -331,7 +334,7 @@ export default function AdminDashboard() {
             </button>
           </div>
 
-          {/* Listings */}
+          {/* Listings Tab */}
           {activeTab === 'rooms' ? (
             <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-8">
               <div className="flex justify-between items-center mb-6">

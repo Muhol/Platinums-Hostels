@@ -18,7 +18,16 @@ const app = getApps().length > 0
   : (firebaseConfig.apiKey ? initializeApp(firebaseConfig) : null);
 
 // Export db and auth safely
+/**
+ * Firestore database instance.
+ * Safe to use anywhere in the application; will be empty object if config is missing.
+ */
 const db = app ? getFirestore(app) : {} as unknown as Firestore;
+
+/**
+ * Firebase Authentication instance.
+ * Safe to use anywhere in the application; will be empty object if config is missing.
+ */
 const auth = app ? getAuth(app) : {} as unknown as Auth;
 
 export { db, auth };
