@@ -10,7 +10,7 @@ import Image from 'next/image';
 import { CldUploadButton } from 'next-cloudinary';
 import { BookingService } from '@/services/bookingService';
 import { Booking } from '@/types/booking';
-import { Calendar, Check, Ban, MessageSquare } from 'lucide-react';
+import { Calendar, Check, Ban } from 'lucide-react';
 import { ContactService } from '@/services/contactService';
 import { Contact } from '@/types/contact';
 
