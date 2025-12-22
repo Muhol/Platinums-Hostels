@@ -59,20 +59,18 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 py-12">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className='relative bg-white rounded-[50px] shadow-xl w-full max-w-[900px] bg-blue flex items-center gap-8 overflow-hidden'>
+        className='relative bg-white rounded-3xl md:rounded-[50px] shadow-xl w-full max-w-[900px] flex flex-col md:flex-row items-center overflow-hidden min-h-[600px] md:min-h-0'>
         
         {/* Login Form Section */}
         <motion.div 
-          className={`flex-1 p-8 transition-opacity duration-300 ${!isLogin ? "opacity-20 pointer-events-none" : "opacity-100"}`}
+          className={`w-full md:flex-1 p-6 md:p-8 transition-opacity duration-300 ${!isLogin ? "opacity-20 pointer-events-none hidden md:block" : "opacity-100 block"}`}
         >
           <div className="text-center mb-8 w-full">
-            <div className="w-full flex">
-              <p className="text-black font-bold text-xl mt-2">Please sign in to continue</p>
-            </div>
+            <h2 className="text-black font-bold text-2xl md:text-xl mt-2">Please sign in to continue</h2>
           </div>
 
           {error && isLogin && (
@@ -81,7 +79,7 @@ export default function AdminLogin() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-5">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1.5">Email Address</label>
               <div className="relative">
@@ -119,17 +117,23 @@ export default function AdminLogin() {
             >
               {loading ? 'Processing...' : 'Access Dashboard'}
             </button>
+            
+            <button 
+              type="button"
+              onClick={() => setIsLogin(false)}
+              className="md:hidden text-blue font-semibold text-sm mt-4 underline"
+            >
+              New here? Create an account
+            </button>
           </form>
         </motion.div>
 
         {/* Register Form Section */}
         <motion.div 
-          className={`flex-1 p-8 transition-opacity duration-300 ${isLogin ? "opacity-20 pointer-events-none" : "opacity-100"}`}
+          className={`w-full md:flex-1 p-6 md:p-8 transition-opacity duration-300 ${isLogin ? "opacity-20 pointer-events-none hidden md:block" : "opacity-100 block"}`}
         >
           <div className="text-center mb-8">
-            <div className="w-full flex">
-              <p className="text-black font-bold text-xl mt-2">Create an account</p>
-            </div>
+            <h2 className="text-black font-bold text-2xl md:text-xl mt-2">Create an account</h2>
           </div>
 
           {error && !isLogin && (
@@ -138,7 +142,7 @@ export default function AdminLogin() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-5">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1.5">Email Address</label>
               <div className="relative">
@@ -191,21 +195,36 @@ export default function AdminLogin() {
             >
               {loading ? 'Creating...' : 'Register Account'}
             </button>
+
+            <button 
+              type="button"
+              onClick={() => setIsLogin(true)}
+              className="md:hidden text-blue font-semibold text-sm mt-4 underline"
+            >
+              Already have an account? Log in
+            </button>
           </form>
         </motion.div>
 
-        {/* Toggle Panel */}
-        <motion.div className={`absolute h-full w-1/2 bg-blue/20 backdrop-blur ${isLogin?"rounded-r-[50px]":"rounded-l-[50px]"} z-10 flex flex-col gap-5 items-center justify-center transition-all ease-in-out duration-700 ${isLogin? "translate-x-full":"translate-x-0"}`}>
+        {/* Toggle Panel (Desktop only) */}
+        <motion.div 
+          className={`hidden md:flex absolute h-full w-1/2 bg-blue/50 backdrop-blur z-10 flex-col gap-5 items-center justify-center transition-all ease-in-out duration-700 ${isLogin? "translate-x-full rounded-r-[50px]":"translate-x-0 rounded-l-[50px]"}`}
+        >
           <div className="relative w-[270px] h-[270px] rounded-full overflow-hidden p-1">
-            <Image src="/images/logo-removebg.png" alt="Platinum Hostels" fill className="object-contain " />
+            <Image src="/images/logo-removebg.png" alt="Platinum Hostels" fill className="object-contain brightness-0 " />
           </div>
-          <button onClick={()=>{
-            setIsLogin(!isLogin);
-            setError(''); // Clear error on switch
-            setEmail(''); // Optional: clear fields or keep them
-            setPassword('');
-            setConfirmPassword('');
-          }} className=" bg-transparent min-w-[200px] px-9 border-2 border-blue hover:border-white hover:bg-white text-blue hover:text-blue py-2 rounded-full font-bold hover:bg-white disabled:opacity-50 transition-all mt-2">{isLogin?"Create Account":"Log Back in"}</button>
+          <button 
+            onClick={()=>{
+              setIsLogin(!isLogin);
+              setError('');
+              setEmail('');
+              setPassword('');
+              setConfirmPassword('');
+            }} 
+            className="bg-transparent min-w-[200px] px-9 border-2 border-black hover:border-white hover:bg-white text-black py-2 rounded-full font-bold transition-all"
+          >
+            {isLogin ? "Create Account" : "Log Back in"}
+          </button>
         </motion.div>
       </motion.div>
     </div>
