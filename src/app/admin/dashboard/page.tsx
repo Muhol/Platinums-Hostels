@@ -309,10 +309,9 @@ export default function AdminDashboard() {
                                             multiple: true
                                         }}
                                         uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || "platinums_preset"}
-                                    onSuccess={(result: any) => {
-                                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                                        const info = result?.info as any; 
-                                        if (info?.secure_url) {
+                                    onSuccess={(result: { info?: string | { secure_url: string } }) => {
+                                        const info = result?.info;
+                                        if (typeof info === 'object' && info?.secure_url) {
                                             const secureUrl = info.secure_url;
                                             setNewRoom(prev => {
                                                 const currentImages = prev.images || [];
