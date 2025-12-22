@@ -1,5 +1,5 @@
 import { db } from '@/lib/firebase';
-import { collection, getDocs, setDoc, doc, getCountFromServer } from 'firebase/firestore';
+import { collection, setDoc, doc, getCountFromServer } from 'firebase/firestore';
 
 const ADMINS_COLLECTION = 'admins';
 

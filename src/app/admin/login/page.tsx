@@ -47,9 +47,8 @@ export default function AdminLogin() {
 
         router.push('/admin/dashboard');
       }
-    } catch (err: any) {
-      // console.error(err);
-      if (err.message) {
+    } catch (err: unknown) {
+      if (err instanceof Error) {
         setError(err.message.replace('Firebase: ', ''));
       } else {
         setError('Authentication failed. Please check your credentials.');

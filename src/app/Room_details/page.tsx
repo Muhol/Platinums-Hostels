@@ -9,7 +9,7 @@ import { RoomService } from '@/services/roomService'
 import { Room } from '@/types/room'
 
 // Map of amenity strings to Lucide components
-const AMENITY_ICONS: Record<string, any> = {
+const AMENITY_ICONS: Record<string, React.ElementType> = {
   "Fast WiFi": Wifi,
   "Comfy Bed": Bed,
   "TV & Cable": Monitor,

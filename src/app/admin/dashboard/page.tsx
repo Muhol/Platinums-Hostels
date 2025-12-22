@@ -6,7 +6,6 @@ import { Room } from '@/types/room';
 import { Plus, Trash2, LogOut, Loader2, Save, Edit, X } from 'lucide-react';
 import { auth } from '@/lib/firebase';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 import Image from 'next/image';
 import { CldUploadButton } from 'next-cloudinary';
 
@@ -311,16 +310,20 @@ export default function AdminDashboard() {
                                         }}
                                         uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || "platinums_preset"}
                                     onSuccess={(result: any) => {
-                                        const secureUrl = result.info.secure_url;
-                                        setNewRoom(prev => {
-                                            const currentImages = prev.images || [];
-                                            const updatedImages = [...currentImages, secureUrl];
-                                            return { 
-                                                ...prev, 
-                                                images: updatedImages,
-                                                image: updatedImages[0] // Ensure first image is cover
-                                            };
-                                        });
+                                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                        const info = result?.info as any; 
+                                        if (info?.secure_url) {
+                                            const secureUrl = info.secure_url;
+                                            setNewRoom(prev => {
+                                                const currentImages = prev.images || [];
+                                                const updatedImages = [...currentImages, secureUrl];
+                                                return { 
+                                                    ...prev, 
+                                                    images: updatedImages,
+                                                    image: updatedImages[0] // Ensure first image is cover
+                                                };
+                                            });
+                                        }
                                     }}
                                     className="px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors flex items-center gap-2"
                                     >
