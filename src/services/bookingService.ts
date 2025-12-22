@@ -8,7 +8,6 @@ import {
   doc, 
   updateDoc, 
   deleteDoc,
-  serverTimestamp 
 } from "firebase/firestore";
 import { Booking } from "@/types/booking";
 
