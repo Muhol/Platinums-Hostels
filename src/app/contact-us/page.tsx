@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Mail, Phone, MapPin, Clock } from 'lucide-react'
+import { ContactService } from '@/services/contactService'
 
 function ContactPage() {
   const [formData, setFormData] = useState({
@@ -60,9 +61,8 @@ function ContactPage() {
     
     setIsSubmitting(true)
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false)
+    try {
+      await ContactService.addContact(formData)
       setSubmitSuccess(true)
       setFormData({
         name: '',
@@ -75,7 +75,12 @@ function ContactPage() {
       setTimeout(() => {
         setSubmitSuccess(false)
       }, 5000)
-    }, 1500)
+    } catch (error) {
+      console.error("Error submitting contact form:", error)
+      alert("Something went wrong. Please try again later.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

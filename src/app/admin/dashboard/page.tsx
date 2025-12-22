@@ -10,7 +10,9 @@ import Image from 'next/image';
 import { CldUploadButton } from 'next-cloudinary';
 import { BookingService } from '@/services/bookingService';
 import { Booking } from '@/types/booking';
-import { Calendar, Check, Ban } from 'lucide-react';
+import { Calendar, Check, Ban, MessageSquare } from 'lucide-react';
+import { ContactService } from '@/services/contactService';
+import { Contact } from '@/types/contact';
 
 // Available amenities matching the frontend icons
 const AVAILABLE_AMENITIES = [
@@ -97,9 +99,10 @@ const SEED_DATA = [
 export default function AdminDashboard() {
   const [rooms, setRooms] = useState<Room[]>([]);
   const [bookings, setBookings] = useState<Booking[]>([]);
+  const [contacts, setContacts] = useState<Contact[]>([]);
   const [loading, setLoading] = useState(true);
   const [isAdding, setIsAdding] = useState(false);
-  const [activeTab, setActiveTab] = useState<'rooms' | 'bookings'>('rooms');
+  const [activeTab, setActiveTab] = useState<'rooms' | 'bookings' | 'messages'>('rooms');
   const router = useRouter();
 
 
@@ -125,7 +128,17 @@ export default function AdminDashboard() {
   useEffect(() => {
     fetchRooms();
     fetchBookings();
+    fetchContacts();
   }, []);
+
+  const fetchContacts = async () => {
+    try {
+      const data = await ContactService.getContacts();
+      setContacts(data);
+    } catch (error) {
+      console.error("Error fetching contacts:", error);
+    }
+  };
 
   const fetchBookings = async () => {
     try {
@@ -224,6 +237,17 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleDeleteContact = async (id: string) => {
+    if (confirm('Delete this message?')) {
+      try {
+        await ContactService.deleteContact(id);
+        fetchContacts();
+      } catch (error) {
+        console.error("Error deleting message:", error);
+      }
+    }
+  };
+
   const handleEdit = (room: Room) => {
       setIsEditing(true);
       setCurrentRoomId(room.id!);
@@ -295,6 +319,14 @@ export default function AdminDashboard() {
             >
               Bookings {bookings.filter(b => b.status === 'pending').length > 0 && (
                 <span className="bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">{bookings.filter(b => b.status === 'pending').length}</span>
+              )}
+            </button>
+            <button 
+              onClick={() => setActiveTab('messages')}
+              className={`pb-4 px-6 font-bold text-lg transition-all flex items-center gap-2 ${activeTab === 'messages' ? 'text-blue border-b-2 border-blue' : 'text-gray-400 hover:text-gray-600'}`}
+            >
+              Messages {contacts.length > 0 && (
+                <span className="bg-blue text-white text-xs px-2 py-0.5 rounded-full">{contacts.length}</span>
               )}
             </button>
           </div>
@@ -497,7 +529,7 @@ export default function AdminDashboard() {
                   </div>
                 )}
             </div>
-          ) : (
+          ) : activeTab === 'bookings' ? (
             <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
                <div className="p-6 border-b border-gray-100">
                   <h2 className="text-xl font-bold">Booking Requests</h2>
@@ -571,6 +603,63 @@ export default function AdminDashboard() {
                         <tr>
                           <td colSpan={5} className="px-6 py-12 text-center text-gray-500">
                             No booking requests found.
+                          </td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+               </div>
+            </div>
+          ) : (
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+               <div className="p-6 border-b border-gray-100">
+                  <h2 className="text-xl font-bold">Contact Messages</h2>
+                  <p className="text-sm text-gray-500">View and manage user inquiries</p>
+               </div>
+               <div className="overflow-x-auto">
+                  <table className="w-full text-left">
+                    <thead className="bg-gray-50 text-gray-600 text-sm font-semibold">
+                      <tr>
+                        <th className="px-6 py-4">Author</th>
+                        <th className="px-6 py-4">Subject</th>
+                        <th className="px-6 py-4">Message</th>
+                        <th className="px-6 py-4">Date</th>
+                        <th className="px-6 py-4">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-100">
+                      {contacts.length > 0 ? contacts.map((contact) => (
+                        <tr key={contact.id} className="hover:bg-gray-50 transition-colors">
+                          <td className="px-6 py-4">
+                            <div className="font-bold text-gray-900">{contact.name}</div>
+                            <div className="text-sm text-gray-500">{contact.email}</div>
+                            <div className="text-sm text-gray-500">{contact.phone}</div>
+                          </td>
+                          <td className="px-6 py-4">
+                            <div className="font-semibold text-blue">{contact.subject}</div>
+                          </td>
+                          <td className="px-6 py-4 max-w-[300px]">
+                            <p className="text-sm text-gray-600 line-clamp-3">{contact.message}</p>
+                          </td>
+                          <td className="px-6 py-4 text-sm text-gray-600 whitespace-nowrap">
+                            <div className="flex items-center gap-2">
+                               <Calendar size={14} />
+                               {new Date(contact.createdAt).toLocaleDateString()}
+                            </div>
+                          </td>
+                          <td className="px-6 py-4">
+                            <button 
+                              onClick={() => handleDeleteContact(contact.id!)}
+                              className="p-2 text-gray-400 hover:text-red-500 hover:bg-gray-100 rounded-lg transition-colors" title="Delete Message"
+                            >
+                              <Trash2 size={18} />
+                            </button>
+                          </td>
+                        </tr>
+                      )) : (
+                        <tr>
+                          <td colSpan={5} className="px-6 py-12 text-center text-gray-500">
+                            No messages found.
                           </td>
                         </tr>
                       )}
