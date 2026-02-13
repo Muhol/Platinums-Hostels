@@ -48,9 +48,9 @@ function WhyChooseUs () {
     <div className="max-w-[1400px] w-full text-center flex flex-col gap-4 md:gap-12">
       
       {/* Section Title */}
-      <h1 className="font-extrabold text-2xl md:text-4xl tracking-wide leading-snug">
+      <h2 className="font-extrabold text-2xl md:text-4xl tracking-wide leading-snug">
          Why Choose <span className="text-blue">Platinum Hostels?</span>
-      </h1>
+      </h2>
   
       {/* Cards Grid */}
       <div className="flex flex-wrap items-center justify-center  gap-10 place-items-center">
@@ -68,7 +68,7 @@ function WhyChooseUs () {
             </div>
               {/* <-----------<CONTENT>------------> */}
             <div className="min-w-[50%] flex flex-col">
-              <h1 className="font-bold text-xl sm:text-2xl  mb-4">{item.head}</h1>
+              <h3 className="font-bold text-xl sm:text-2xl  mb-4">{item.head}</h3>
               <p className="font-medium sm:text-lg ">{item.desc}</p>
             </div>
           </div>

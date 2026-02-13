@@ -21,7 +21,7 @@ function HeroSection() {
       
       {/* Image removed to use global fixed background */}
       
-      <div className=" absolute pt-[140px] md:pt-[0] flex flex-col md:items-center md:justify-center inset-0 bg-black/40 md:bg-black/40 backdrop-filter sm:backdrop-blur-sm md:backdrop-blur-none z-10">
+      <div className=" absolute pt-[140px] md:pt-[0] flex flex-col md:items-center md:justify-center inset-0 bg-black/60 md:bg-black/60 z-10">
       {/* Heading Text */}
         <div className="relative z-20 flex flex-col items-center md:justify-center h-full text-center px-6">
           <motion.div
@@ -82,7 +82,7 @@ function HeroSection() {
               // className=' flex items-center gap-4  bg-light_green  transition-all duration-300 text-white px-[20px] py-[10px] rounded-3xl border border-light_green active:px[25px] md:hover:px-[25px] active:bg-blue md:hover:bg-blue md:hover:border-blue md:backdrop-filter  md:rounded-lg md:my-[30px] '
               className=' flex items-center gap-4 bg-blue md:backdrop-blur-md  transition-all duration-300 text-white px-[20px] py-[10px] rounded-3xl font-bold active:px[25px] md:hover:px-[25px] active:bg-light_green md:hover:bg-light_green/80 md:hover:border-blue md:backdrop-filter  md:rounded-lg md:my-[30px] '
             >
-              Secure Your Space Now <Image src={"/icons/arrow-right.svg"} alt="" width={25} height={25} />
+              Secure Your Space Now <Image src={"/icons/arrow-right.svg"} alt="Arrow Right" width={25} height={25} />
             </motion.button>
           </Link>
         </div>
